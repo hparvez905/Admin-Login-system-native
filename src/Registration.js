@@ -6,16 +6,16 @@ import {firebase} from '../config';
 const Registration = () => {
     const [email,setEmail] =useState('')
     const [password,setPassword]=useState('')
-    const [firstName,setFirstName]=useState('')
-    const [lastName,setLastName]=useState('')
+    const [aFirstName,setAFirstName]=useState('')
+    const [aLastName,setALastName]=useState('')
     const [nid,setNid]=useState('')
-    registerUser= async (email,password,firstName,lastName,nid)=>{
+    registerUser= async (email,password,aFirstName,aLastName,nid)=>{
         // email verification 
         await firebase.auth().createUserWithEmailAndPassword(email,password)
         .then(()=>{
             firebase.auth().currentUser.sendEmailVerification({
                 handleCodeInApp:true,
-                url:'https://e-gd-admin-aa8b7.firebaseapp.com',
+                url:'https://e-gd-5a804.firebaseapp.com',
 
         })
         .then(()=>{
@@ -24,11 +24,11 @@ const Registration = () => {
             alert(error.message)
         })
         .then(()=>{
-            firebase.firestore().collection('users')
+            firebase.firestore().collection('Admins')
             .doc(firebase.auth().currentUser.uid)
             .set({
-                firstName,
-                lastName,
+                aFirstName,
+                aLastName,
                 email,
                 nid,
                 })
@@ -50,14 +50,14 @@ const Registration = () => {
         <TextInput
         style={styles.TextInput}
         placeholder='First Name'
-        onChangeText={(firstName)=> setFirstName(firstName)}
+        onChangeText={(aFirstName)=> setAFirstName(aFirstName)}
         autoCorrect={false}
         />
 
         <TextInput
         style={styles.TextInput}
         placeholder='Last Name'
-        onChangeText={(lastName)=> setLastName(lastName)}
+        onChangeText={(aLastName)=> setALastName(aLastName)}
         autoCorrect={false}
         />
 
@@ -80,7 +80,7 @@ const Registration = () => {
         />
          <TextInput
         style={styles.TextInput}
-        placeholder='Nid'
+        placeholder='Id'
         onChangeText={(nid)=> setNid(nid)}
         autoCapitalize='none'
         autoCorrect={false}
@@ -91,7 +91,7 @@ const Registration = () => {
 
       </View>
       <TouchableOpacity
-      onPress={()=>registerUser(email,password,firstName,lastName,nid)}
+      onPress={()=>registerUser(email,password,aFirstName,aLastName,nid)}
       style={styles.button}>
         <Text style={{fontWeight:'bold',fontSize:22}}
         >SignUp</Text>

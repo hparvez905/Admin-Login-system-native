@@ -1,9 +1,11 @@
 import { View, Text,StyleSheet,TouchableOpacity } from 'react-native'
 import React,{useEffect,useState} from 'react'
 import {firebase} from '../config'
+import { useNavigation } from '@react-navigation/native';
 
 const Dashboard = () => {
-    const [name,setName]=useState('')
+    const navigation =useNavigation()
+    const [aName,setAName]=useState('')
 
     // change password
     const changePassword=()=>{
@@ -16,11 +18,11 @@ const Dashboard = () => {
     }
 
     useEffect(()=>{
-        firebase.firestore().collection('users')
+        firebase.firestore().collection('Admins')
         .doc(firebase.auth().currentUser.uid).get()
         .then((snapshot)=>{
             if (snapshot.exists){
-                setName(snapshot.data())
+                setAName(snapshot.data())
             }
             else{
                 console.log('user does not exits')
@@ -30,8 +32,15 @@ const Dashboard = () => {
   return (
     <View style={styles.container}>
       <Text style={{fontSize:20,fontWeight:'bold',color:'red'}}>
-        Welcome {name.firstName} {name.lastName}
+        Welcome  {aName.aFirstName} {aName.aLastName} Sir
+       
       </Text>
+      <TouchableOpacity
+        onPress={() => navigation.navigate('GdList')}
+        style={styles.button}
+        >
+            <Text style={{fontWeight:'bold',fontSize:22}}>Gd List</Text>
+        </TouchableOpacity>
       <TouchableOpacity 
       onPress={()=>
         {

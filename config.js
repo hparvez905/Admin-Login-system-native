@@ -3,13 +3,13 @@ import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
 
 const firebaseConfig={
-  apiKey: "AIzaSyB4vrMWcnHA3tm8ZDQ82IrsX9Wuh4fc_Vk",
-  authDomain: "e-gd-admin-aa8b7.firebaseapp.com",
-  projectId: "e-gd-admin-aa8b7",
-  storageBucket: "e-gd-admin-aa8b7.appspot.com",
-  messagingSenderId: "330692782077",
-  appId: "1:330692782077:web:e2526b4b1d6e02b7315b94",
-  measurementId: "G-3J774WTRZG"
+  apiKey: "AIzaSyDAfPfiGoZl-rZCLuz_Fcy-1qchM1khLko",
+  authDomain: "e-gd-5a804.firebaseapp.com",
+  projectId: "e-gd-5a804",
+  storageBucket: "e-gd-5a804.appspot.com",
+  messagingSenderId: "926054275159",
+  appId: "1:926054275159:web:22e21290d277856bb4eb12",
+  measurementId: "G-4KG42LXS06"
 }
 
 if (!firebase.apps.length){

@@ -10,17 +10,23 @@ import Login from "./src/Login";
 import Registration from "./src/Registration";
 import Dashboard from "./src/Dashboard";
 import Header from "./component/Header";
+import GdList from "./src/GdList";
+import Waiting from "./src/status/Waiting";
+import Accepted from "./src/status/Accepted";
+import Rejected from "./src/status/Rejected";
+import Closed from "./src/status/Closed";
+import Detail from "./src/status/Detail";
 
 const Stack =createStackNavigator();
 
 function App(){
   const [initializing, setInitializing] =useState(true);
-  const [user,setUser]=useState();
+  const [Admin,setAdmin]=useState();
 
   //Handle user state changes
 
-  function onAuthStateChanged(user){
-    setUser(user);
+  function onAuthStateChanged(Admin){
+    setAdmin(Admin);
     if (initializing) setInitializing(false);
   }
   useEffect(()=>{
@@ -29,7 +35,7 @@ function App(){
   },[]);
   if (initializing) return null;
 
-  if(!user){
+  if(!Admin){
     return(
       <Stack.Navigator>
         <Stack.Screen
@@ -75,6 +81,90 @@ function App(){
           borderBottomLeftRadius:50,
           borderBottomRightRadius:250,
           backgroundColor:'#F08E12',
+          shadowColor:'#000',
+          elevation:25
+        }
+        }}
+        />
+        <Stack.Screen
+        name='GdList'
+        component={GdList}
+        options={{headerTitle:()=> <Header name='E-GD(Admin)'/>,
+        headerStyle:{
+          height:120,
+          borderBottomLeftRadius:50,
+          borderBottomRightRadius:250,
+          backgroundColor:'#F08E12',
+          shadowColor:'#000',
+          elevation:25
+        }
+        }}
+        />
+        <Stack.Screen
+        name='Waiting'
+        component={Waiting}
+        options={{headerTitle:()=> <Header name='E-GD'/>,
+        headerStyle:{
+          height:120,
+          borderBottomLeftRadius:50,
+          borderBottomRightRadius:250,
+          backgroundColor:'#10E510',
+          shadowColor:'#000',
+          elevation:25
+        }
+        }}
+        />
+        <Stack.Screen
+        name='Accepted'
+        component={Accepted}
+        options={{headerTitle:()=> <Header name='E-GD'/>,
+        headerStyle:{
+          height:120,
+          borderBottomLeftRadius:50,
+          borderBottomRightRadius:250,
+          backgroundColor:'#10E510',
+          shadowColor:'#000',
+          elevation:25
+        }
+        }}
+        />
+        <Stack.Screen
+        name='Rejected'
+        component={Rejected}
+        options={{headerTitle:()=> <Header name='E-GD'/>,
+        headerStyle:{
+          height:120,
+          borderBottomLeftRadius:50,
+          borderBottomRightRadius:250,
+          backgroundColor:'#10E510',
+          shadowColor:'#000',
+          elevation:25
+        }
+        }}
+        />
+        <Stack.Screen
+        name='Closed'
+        component={Closed}
+        options={{headerTitle:()=> <Header name='E-GD'/>,
+        headerStyle:{
+          height:120,
+          borderBottomLeftRadius:50,
+          borderBottomRightRadius:250,
+          backgroundColor:'#10E510',
+          shadowColor:'#000',
+          elevation:25
+        }
+        }}
+        />
+         <Stack.Screen
+        name='Detail'
+        component={Detail}
+        options={{headerTitle:()=> <Header name='E-GD'/>,
+        headerStyle:{
+          height:120,
+          borderBottomLeftRadius:50,
+          borderBottomRightRadius:250,
+          backgroundColor:'#10E510',
           shadowColor:'#000',
           elevation:25
         }
